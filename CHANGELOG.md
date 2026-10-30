@@ -1,3 +1,16 @@
+# Smart Reading Pen Web V2 — 2026-10-30
+
+- Added the photographed characters 海 → sea / laut and 请 → please / sila to the tiny offline vocabulary (context can change the meaning).
+- iPad OCR: separate Chinese `chi_sim`, English `eng`, Malay `msa` models; no three-language heavy worker.
+- Put original OCR language selector before the OCR button. Do not guess or overwrite selected source language after recognition.
+- Added automatic crop-aware OCR page segmentation (single character, one line, page), manually selectable.
+- Upscale small cropped Chinese characters; retry low-confidence Chinese recognition with alternate segmentation and optional contrast. No automatic invented characters.
+- Warn if Chinese OCR returns only Latin gibberish, preventing accidental junk translations.
+- PWA updated from cache-first to network-first for HTML/JS/CSS and changed cache version.
+- Keep Android V96 independent. Keep progress storage key unchanged.
+
+---
+
 # SmartReadingPen_Web_V1
 
 **First independent browser edition** (source derived from user-supplied SmartReadingPen Android V96):

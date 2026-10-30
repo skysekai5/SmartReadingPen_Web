@@ -1,0 +1,20 @@
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage'])
+ page=browser.new_page(viewport={'width':390,'height':844},device_scale_factor=1)
+ errors=[]
+ page.on('pageerror',lambda e:errors.append(str(e)))
+ page.goto('http://127.0.0.1:8008',wait_until='domcontentloaded',timeout=30000)
+ page.wait_for_timeout(600)
+ print('Initial title',page.title(),'photo=',page.locator('#photo-file').count(),'errors=',errors)
+ page.get_by_role('button',name='学习乐园').first.click();print('play:',page.locator('[data-go=shooter]').count())
+ page.locator('[data-go=shooter]').click();print('worlds:',page.locator('[data-world]').count())
+ page.locator('[data-world="0"]').click(); print('shooter:',page.locator('#shooter-canvas').count(), 'target=',page.locator('#word-target').inner_text())
+ page.locator('#shooter-start').click();page.locator('#shooter-fire').click();page.wait_for_timeout(1800);print('game after start:', page.locator('#shooter-canvas').count())
+ page.get_by_role('button',name='我的学习工具').first.click(); print('tools:',page.locator('[data-go=stroke]').count())
+ page.locator('[data-go=dictionary]').click();print('dictionary:',page.locator('#dict-results .panel').count())
+ page.get_by_role('button',name='我的学习工具').first.click();page.locator('[data-go=voice]').click();print('voices:',page.locator('[data-voice]').count())
+ page.get_by_role('button',name='学习乐园').first.click();page.locator('[data-go=math]').click();print('math:',page.locator('[data-answer]').count())
+ print('errors:',errors)
+ page.screenshot(path='/mnt/data/web_v1_build/web_v1_mobile.png',full_page=True)
+ browser.close()

@@ -3,6 +3,7 @@ export const WORDS = [
 ['apple','🍎','苹果','apple','epal'],['banana','🍌','香蕉','banana','pisang'],['orange','🍊','橙子','orange','oren'],['watermelon','🍉','西瓜','watermelon','tembikai'],['strawberry','🍓','草莓','strawberry','strawberi'],['grapes','🍇','葡萄','grapes','anggur'],
 ['cat','🐈','猫','cat','kucing'],['dog','🐕','狗','dog','anjing'],['bird','🐦','鸟','bird','burung'],['fish','🐟','鱼','fish','ikan'],['rabbit','🐇','兔子','rabbit','arnab'],['elephant','🐘','大象','elephant','gajah'],
 ['car','🚗','汽车','car','kereta'],['bus','🚌','巴士','bus','bas'],['train','🚆','火车','train','kereta api'],['airplane','✈️','飞机','airplane','kapal terbang'],['bicycle','🚲','自行车','bicycle','basikal'],['ship','🚢','轮船','ship','kapal'],
+['sea','🌊','海','sea','laut'],['please','🙏','请','please','sila'],
 ['house','🏠','房子','house','rumah'],['school','🏫','学校','school','sekolah'],['hospital','🏥','医院','hospital','hospital'],['library','📚','图书馆','library','perpustakaan'],['book','📖','书','book','buku'],['sun','☀️','太阳','sun','matahari']
 ].map(([id,emoji,zh,en,ms])=>({id,emoji,zh,en,ms}));
 const w=(en,zh,ms)=>({en,zh,ms});

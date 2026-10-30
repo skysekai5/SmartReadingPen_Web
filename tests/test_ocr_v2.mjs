@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {ocrLanguage,guessLayout,pageSegMode,scoreOCR,isLikelyWrongScript} from '../js/ocr.js';
+assert.equal(ocrLanguage('zh'),'chi_sim');
+assert.equal(ocrLanguage('en'),'eng');
+assert.equal(ocrLanguage('ms'),'msa');
+assert.equal(guessLayout({x:.2,y:.2,w:.2,h:.2},1000,1000,'auto'),'single');
+assert.equal(guessLayout({x:.1,y:.1,w:.8,h:.1},1000,1000,'auto'),'line');
+assert.equal(guessLayout(null,1000,1000),'page');
+assert.equal(guessLayout(null,1000,1000,'single'),'single');
+assert.equal(pageSegMode('single'),'10');
+assert.equal(pageSegMode('line'),'7');
+assert.equal(pageSegMode('page'),'6');
+assert.ok(scoreOCR('海',45,'zh')>scoreOCR('3 ng',90,'zh'));
+assert.ok(scoreOCR('请',30,'zh')>scoreOCR('Li',99,'zh'));
+assert.equal(isLikelyWrongScript('3 ng Li', 'zh'),true);
+assert.equal(isLikelyWrongScript('海', 'zh'),false);
+assert.equal(isLikelyWrongScript('hello', 'en'),false);
+console.log('15 V2 OCR language/layout/quality assertions passed');
